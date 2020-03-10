@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html>
+  {{ partial "head.html" .  }}
+<body>
+<div class="wrapper">
+<nav>
+ 
+  	<div class="pull-left">
+    	<h1><a href="javascript:"><img src="assets/img/icon.png" alt="Free Documentation Template Icon" /> <span>DocWeb</span></a></h1>
+    </div>
+    
+    <div class="pull-right">
+    	<a href="http://frittt.com/free-documentation-html-template-docweb" target="_blank" class="btn btn-download"><img src="assets/img/download.png" width="25" alt="Download Free Documentation Template" /> Download Now</a>
+    </div>
+
+</nav>
+<header>
+  <div class="container">
+    <h2 class="lone-header">Free Documentation HTML Template [ Responsive ]</h2>
+  </div>
+</header>
+<section>
+  <div class="container">
+{{ partial "nav.html" . }}
+    <div class="docs-content">
+      <h2> Getting Started</h2>
+      <h3 id="welcome"> Welcome</h3>
+      <p> Are you listening to your customers?</p>
+      {{ range $name, $taxonomy := .Site.Taxonomies.categories }}
+        <li><strong>{{ $name | title }}</strong></li>
+        {{ range $taxonomy.Pages }}
+        <h3 id="{{ .LinkTitle | urlize }}" class="cc-active">{{ .Title }}</h3>
+        {{ .Content }}
+        {{ end }}
+      {{ end }}
+    </div>
+  </div>
+</section>
+{{ partial "footer.html" }}
+</div>
+<script src="{{ .Site.BaseURL }}assets/js/jquery.min.js"></script> 
+<script src="{{ .Site.BaseURL }}assets/js/layout.js"></script>
+</body>
+</html>
